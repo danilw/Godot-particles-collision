@@ -1,0 +1,88 @@
+[gd_scene load_steps=12 format=2]
+
+[ext_resource path="res://sdf.shader" type="Shader" id=1]
+[ext_resource path="res://poly_gen_sdf.gd" type="Script" id=2]
+[ext_resource path="res://bg.shader" type="Shader" id=3]
+[ext_resource path="res://particles.shader" type="Shader" id=4]
+
+[sub_resource type="ShaderMaterial" id=1]
+shader = ExtResource( 1 )
+shader_param/maxx = null
+
+[sub_resource type="ImageTexture" id=2]
+flags = 0
+flags = 0
+size = Vector2( 1280, 720 )
+
+[sub_resource type="ViewportTexture" id=3]
+viewport_path = NodePath("sdf_map")
+
+[sub_resource type="ShaderMaterial" id=4]
+resource_local_to_scene = true
+shader = ExtResource( 3 )
+shader_param/sdf_map = SubResource( 3 )
+
+[sub_resource type="ImageTexture" id=5]
+size = Vector2( 1280, 720 )
+
+[sub_resource type="ViewportTexture" id=6]
+viewport_path = NodePath("sdf_map")
+
+[sub_resource type="ShaderMaterial" id=7]
+resource_local_to_scene = true
+shader = ExtResource( 4 )
+shader_param/resolution = Vector2( 1280, 720 )
+shader_param/grav = Vector2( 0, 10 )
+shader_param/particle_size = 10
+shader_param/sdf_map = SubResource( 6 )
+
+[node name="scene" type="Node2D"]
+
+[node name="poly" type="Node2D" parent="."]
+editor/display_folded = true
+
+[node name="polyA" type="Polygon2D" parent="poly"]
+polygon = PoolVector2Array( 89.7195, 589.624, 232.86, 246.541, 285.118, 235.181, 110.168, 616.889 )
+
+[node name="polyB" type="Polygon2D" parent="poly"]
+polygon = PoolVector2Array( 814.511, 628.249, 862.224, 344.24, 880.401, 623.705, 937.203, 330.608, 950.835, 614.617, 1003.09, 326.064, 1019, 619.161, 1082.62, 310.159, 1087.16, 619.161 )
+
+[node name="poly0" type="Polygon2D" parent="poly"]
+polygon = PoolVector2Array( 271.485, 528.278, 385.089, 594.168, 575.943, 591.896, 721.356, 507.829, 610.024, 614.617, 369.184, 623.705 )
+
+[node name="poly1" type="Polygon2D" parent="poly"]
+polygon = PoolVector2Array( 73.8149, 189.739, 239.676, 67.0471, 185.146, 167.018 )
+
+[node name="randomName" type="Polygon2D" parent="poly"]
+polygon = PoolVector2Array( 1003.09, 657.786, 1312.09, 287.438, 1207.58, 514.646, 1309.82, 673.691 )
+
+[node name="oneMore" type="Polygon2D" parent="poly"]
+polygon = PoolVector2Array( 593.983, 256.601, 729.355, 188.036, 866.486, 272.424, 873.518, 253.085, 724.081, 163.423, 632.661, 217.924 )
+
+[node name="abc" type="Polygon2D" parent="poly"]
+polygon = PoolVector2Array( -30.1373, 652.171, 390.045, 659.203, 384.771, 689.09, -40.6859, 692.607 )
+
+[node name="sdf_map" type="Viewport" parent="."]
+size = Vector2( 1280, 720 )
+hdr = false
+disable_3d = true
+usage = 0
+render_target_clear_mode = 2
+render_target_update_mode = 1
+
+[node name="Sprite" type="Sprite" parent="sdf_map"]
+material = SubResource( 1 )
+texture = SubResource( 2 )
+centered = false
+script = ExtResource( 2 )
+
+[node name="bg" type="Sprite" parent="."]
+material = SubResource( 4 )
+texture = SubResource( 5 )
+centered = false
+
+[node name="particles" type="Particles2D" parent="."]
+amount = 999
+lifetime = 7.2
+process_material = SubResource( 7 )
+
