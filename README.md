@@ -1,4 +1,4 @@
-# Godot-particles
+# Godot-particles-collision (2D)
 
 **what is it** particle collision shader for Godot
 
