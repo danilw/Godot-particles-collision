@@ -18,8 +18,8 @@ float map(vec2 p){
 //нормали
 vec2 normal (vec2 p){
 	float eps=2.0/resolution.y; //2x2
-	float dx=(map(p+vec2(eps,0.0))-map(p-vec2(eps,0.0)))/(2.0*eps);
-	float dy=(map(p+vec2(0.0,eps))-map(p-vec2(0.0,eps)))/(2.0*eps);
+	float dx=(map(p+vec2(eps,0.0))-map(p-vec2(eps,0.0)));
+	float dy=(map(p+vec2(0.0,eps))-map(p-vec2(0.0,eps)));
 	vec2 ret= normalize(vec2(dx,dy));
 	return ret;
 }
