@@ -8,4 +8,4 @@
 
 **v2** *bad* normals to edges [youtube link](https://youtu.be/lAtyWqqZrnM). Support collision to dynamic maps/objects.(no need sdf)
 
-**v3** better
+**v3** better (soon...)
