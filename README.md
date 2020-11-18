@@ -8,4 +8,4 @@
 
 **v2** *bad* normals to edges [youtube link](https://youtu.be/lAtyWqqZrnM). Support collision to dynamic maps/objects.(no need sdf)
 
-**v3** better (soon...)
+**v3** will be for Godot4 only, using Vulkan and compute, I do not want make another "bad" physics base on GLES2/3 limitations.
